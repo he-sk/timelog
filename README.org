@@ -1,0 +1,64 @@
+* Quick and easy time logging with Emacs Org mode clocking
+
+I wanted to do an audit of how I spent my time. Tracking time in an
+Excel sheet doesn't really cut it, so I appropriated Org mode's
+clocking feature for it.
+
+Now I can create fancy plots like this (I'm showing just one week
+but you can easily show more):
+
+[[file:timelog-detail.png]]
+
+I use a separate Emacs process for the time log to separate it from
+clocking other tasks I work on. Add this to your =.bashrc=:
+
+#+BEGIN_SRC sh
+# Titles (https://superuser.com/questions/395911/how-to-set-the-title-of-the-tab-in-terminal-app-to-the-remote-server-im-logged)
+function tabname { printf "\e]1;$1\a"; }
+
+# Timelog
+alias timeloggui="open -n -a Emacs.app --args -Q -l ~/unix/src/timelog/timelog.el"
+alias timelog="tabname timelog; emacs -Q -l ~/unix/src/timelog/timelog.el; tabname"
+#+END_SRC
+
+You need to configure some paths. In =timelog.el= change the variables:
+
+#+BEGIN_SRC emacs-lisp
+(defvar vr/timelog-data-path "~/org/habits/timelog"
+  "Path to timelog data")
+
+(defvar vr/timelog-src-path "~/unix/src/timelog"
+  "Path to timelog source code")
+#+END_SRC
+
+To configure the plots, change the variables in =timelog.r=:
+
+#+BEGIN_SRC R
+# Number of weeks
+weeks <- 4
+
+# Order of categories
+order <- c("Schlafen", "Essen",
+           "Arbeit", "Pause",
+           "Review", "Erledigung", "Projekt",
+           "Familie", "Date", "Freunde", "Ausgehen",
+           "Fotografie", "Beauty",
+           "Pendeln", "Prokrastination")
+
+# Colors
+colors <- c("steelblue1",     # Schlafen
+            "steelblue4",     # Essen
+            "gold",           # Arbeit
+            "goldenrod3",     # Pause
+            "darkseagreen4",  # Review
+            "darkseagreen3",  # Erledigung
+            "darkseagreen1",  # Projekt
+            "darkorchid4",    # Familie
+            "darkorchid2",    # Date
+            "orchid2",        # Freunde
+            "plum1",          # Ausgehen
+            "tomato",         # Fotografie
+            "pink",           # Beauty
+            "white",          # Pendeln
+            "black")          # Prokrastination
+#+END_SRC

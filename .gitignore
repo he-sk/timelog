@@ -1,0 +1,7 @@
+.DS_Store
+.RData
+.Rhistory
+clock-save.el
+*.swp
+*pdf
+*txt
