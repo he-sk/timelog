@@ -9,8 +9,8 @@ weeks <- 4
 order <- c("Schlafen", "Essen",
            "Arbeit", "Pause",
            "Review", "Erledigung", "Projekt",
-           "Familie", "Date", "Freunde", "Ausgehen",
-           "Fotografie", "Beauty",
+           "Familie", "Date", "Ausgehen", "Freunde",
+           "Fotografie", "Lesen", "Sport", "Ausruhen", "Spazieren", "Beauty",
            "Pendeln", "Prokrastination")
 
 # Colors
@@ -24,9 +24,13 @@ colors <- c("steelblue1",     # Schlafen
             "darkseagreen1",  # Projekt
             "darkorchid4",    # Familie
             "darkorchid2",    # Date
-            "orchid2",        # Freunde
-            "plum1",          # Ausgehen
+            "orchid2",        # Ausgehen
+            "plum1",          # Freunde
             "tomato",         # Fotografie
+            "coral",          # Lesen
+	    "lightsalmon",    # Sport
+	    "peachpuff",      # Ausruhen
+            "seashell",       # Reisen
             "pink",           # Beauty
             "white",          # Pendeln
             "black")          # Prokrastination
