@@ -38,7 +38,6 @@ colors <- c("steelblue1",     # Schlafen
 # read arguments
 args <- commandArgs(trailingOnly=TRUE)
 filename <- args[1]
-print(filename)
 detail_plot <- args[2]
 
 # read data
