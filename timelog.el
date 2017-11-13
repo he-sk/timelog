@@ -134,6 +134,8 @@
 (defvar vr/timelog-conversion-script (concat vr/timelog-src-path "/convert_timelog.py"))
 (defvar vr/timelog-plotting-script (concat vr/timelog-src-path "/timelog.r"))
 (defvar vr/timelog-detail-plot (concat vr/timelog-data-path "/timelog-detail.pdf"))
+(defvar vr/timelog-summary-plot (concat vr/timelog-data-path "/timelog-summary.pdf"))
+(defvar vr/timelog-weekly-plot (concat vr/timelog-data-path "/timelog-weekly-summary.pdf"))
 
 (defun vr/plot-timeline ()
   (interactive)
@@ -143,10 +145,12 @@
 			    vr/timelog-conversion-script)
 			   vr/timelog-file tmp-file))
     (start-process "plot-timelog" "*plotting output*" "r"
-		   (format "--vanilla -f %s --args %s %s"
+		   (format "--vanilla -f %s --args %s %s %s %s"
 			   (expand-file-name vr/timelog-plotting-script)
 			   tmp-file
-			   (expand-file-name vr/timelog-detail-plot)))
+			   (expand-file-name vr/timelog-detail-plot)
+                           (expand-file-name vr/timelog-summary-plot)
+                           (expand-file-name vr/timelog-weekly-plot)))
     (message "Started timelog plotting")))
 (add-hook 'after-save-hook #'vr/plot-timeline)
 
@@ -154,4 +158,8 @@
 (add-hook 'org-agenda-mode-hook
 	  '(lambda ()
 	     (define-key org-agenda-mode-map (kbd "V")
-	       '(lambda () (interactive) (shell-command (format "open %s" vr/timelog-detail-plot))))))
+	       '(lambda () (interactive) (shell-command (format "open %s" vr/timelog-detail-plot))))
+	     (define-key org-agenda-mode-map (kbd "S")
+	       '(lambda () (interactive) (shell-command (format "open %s" vr/timelog-summary-plot))))
+	     (define-key org-agenda-mode-map (kbd "W")
+	       '(lambda () (interactive) (shell-command (format "open %s" vr/timelog-weekly-plot))))))
