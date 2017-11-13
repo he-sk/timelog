@@ -92,7 +92,7 @@
 
 ;;; show 1 minute clocking gaps
 (setq org-agenda-clock-consistency-checks
-      '(:max-duration "8:00"
+      '(:max-duration "9:00"
                       :min-duration 0
                       :max-gap 0
                       :gap-ok-around nil))
@@ -102,7 +102,7 @@
 
 ;;; capture new tasks
 (setq org-capture-templates
-      '(("p" "Projekt"  entry (file vr/timelog-file) "* %^{Erledigung}  :Erledigung:" :clock-in t :clock-keep t :immediate-finish t)
+      '(("p" "Projekt"  entry (file vr/timelog-file) "* %^{Projekt}    :Projekt:" :clock-in t :clock-keep t :immediate-finish t)
 	("f" "Freizeit" entry (file vr/timelog-file) "* %^{Freizeit}  :Freizeit:" :clock-in t :clock-keep t :immediate-finish t)))
 
 (defun vr/capture (key)
