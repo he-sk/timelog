@@ -33,7 +33,7 @@
 		((org-agenda-overriding-header "Projekt:")))
 	  (tags "+Freizeit-ARCHIVE"
 		((org-agenda-overriding-header "Freizeit:")))
-	  (tags "+Prokrastination"
+	  (tags "+Prokrastination-ARCHIVE"
 		((org-agenda-overriding-header "Prokrastination:")))))))
 
 ;;; show agenda
