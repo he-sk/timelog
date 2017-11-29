@@ -9,7 +9,8 @@ options(lubridate.week.start = 1)
 weeks <- 4
 
 # Order of categories
-order <- c("Schlafen", "Essen",
+order <- c("Schlafen", "Morgen/Abend",
+           "Essen",
            "Arbeit", "Pause",
            "Review", "Erledigung", "Projekt",
            "Familie", "Date", "Ausgehen", "Freunde",
@@ -19,6 +20,7 @@ order <- c("Schlafen", "Essen",
 # Colors
 # http://sape.inf.usi.ch/sites/default/files/ggplot2-colour-names.png
 colors <- c("steelblue1",     # Schlafen
+            "lightskyblue",   # Morgens/Abends
             "steelblue4",     # Essen
             "gold",           # Arbeit
             "goldenrod3",     # Pause

@@ -12,7 +12,10 @@ clock_re=re.compile('^ *CLOCK: \[(%s)\](--\[(%s)\] => .*$)?' % (date_re, date_re
 type_re=re.compile('(Freizeit|Daily|Recurring|ARCHIVE|:?)')
 
 def mangle_type(activity_type):
-    return type_re.sub("", activity_type)
+    activity_type = type_re.sub("", activity_type)
+    if activity_type == "Morgen_Abend":
+        activity_type = "Morgen/Abend"
+    return activity_type
 
 def match_activity(line, current):
     match = activity_re.match(line)
